@@ -2,6 +2,8 @@
 
 A complete MERN stack e-commerce application with product management, order processing, and AI-powered product assistant.
 
+Backend Deployment Live Link (http://productordermanagementapp.onrender.com)
+
 ## 🎯 Project Overview
 
 This is a production-ready MERN application designed for learning and real-world use. It includes:
