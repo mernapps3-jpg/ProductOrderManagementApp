@@ -24,4 +24,14 @@ async function authenticate(req, res, next) {
   }
 }
 
-module.exports = { authenticate }
+// Check if user has required role (admin)
+function authorizeRole(role) {
+  return (req, res, next) => {
+    if (!req.user || req.user.role !== role) {
+      return res.status(403).json({ success: false, message: 'Forbidden: insufficient role' });
+    }
+    next();
+  };
+}
+
+module.exports = { authenticate, authorizeRole }

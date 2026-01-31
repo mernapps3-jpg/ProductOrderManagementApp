@@ -4,7 +4,9 @@ const connectDb = require("./config/db")
 const env = require('./config/env');
 const seedAdmin = require('./utils/seedAdmin');
 const authRoutes = require('./routes/authRoutes');
-// const productRoutes = require('./routes/productRoutes');
+const productRoutes = require('./routes/productRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
@@ -30,7 +32,9 @@ app.get('/api/health', (req, res) => {
 
 // API Routes
 app.use("/api/auth", authRoutes);
-// app.use('/api/products', productRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/ai', aiRoutes);
 
 
 // 404 handler for unmatched routes

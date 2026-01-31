@@ -12,6 +12,7 @@ const env = {
   adminPassword: process.env.ADMIN_PASSWORD || 'admin123',
   adminName: process.env.ADMIN_NAME || 'Admin User',
   geminiApiKey: process.env.GEMINI_API_KEY || '',
+  geminiModel: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
 };
 
 function ensureEnv() {
