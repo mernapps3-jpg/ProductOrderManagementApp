@@ -139,3 +139,51 @@ ProductOrderManagementApp/
     ├── package.json
     └── .env
 ```
+
+## Product & Order Management System
+
+## Table of Contents
+1. [Project Architecture Overview](#project-architecture-overview)
+2. [File Structure & Logic Flow](#file-structure--logic-flow)
+3. [Configuration & Environment](#configuration--environment)
+4. [Database Models](#database-models)
+5. [Routes, Controllers, Services](#routes-controllers-services)
+6. [Middleware & Validators](#middleware--validators)
+7. [Complete API Endpoints](#complete-api-endpoints)
+8. [Postman Testing Guide](#postman-testing-guide)
+9. [Error Scenarios & Responses](#error-scenarios--responses)
+10. [Security & Operational Notes](#security--operational-notes)
+
+---
+
+## Project Architecture Overview
+
+### Technology Stack (from `backend/package.json`)
+- **Runtime**: Node.js
+- **Framework**: Express.js `^4.19.2`
+- **Database**: MongoDB with Mongoose `^7.6.3`
+- **Authentication**: JWT via `jsonwebtoken` `^9.0.2`
+- **Password Hashing**: `bcryptjs` `^2.4.3`
+- **Validation**: `express-validator` `^7.2.1`
+- **AI Integration**:
+  - Google Gemini via `@google/generative-ai` `^0.24.1`
+  - ChatGPT fallback via OpenAI REST API (Axios `^1.7.9`)
+
+### Architecture Pattern
+- **MVC-like**: Routes → Controllers → Services → Models
+- **Middleware Chain**: CORS → JSON parsing → Auth/Validation → Controller → Error handler
+- **Centralized Error Handling**: `errorHandler` at the end of the chain
+
+---
+
+## File Structure & Logic Flow
+
+### Key Directories
+- `src/config`: env + db setup
+- `src/controllers`: HTTP request handlers
+- `src/services`: business logic and DB operations
+- `src/models`: Mongoose schemas
+- `src/routes`: REST endpoints
+- `src/middlewares`: auth, validation, error handling
+- `src/validators`: request validation rules
+- `src/utils`: token generation, admin seeding
