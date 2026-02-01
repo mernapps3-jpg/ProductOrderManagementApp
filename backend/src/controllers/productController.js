@@ -52,7 +52,6 @@ async function getProduct(req, res, next) {
   }
 }
 
-
 // Get all categories
 async function getCategoriesList(req, res, next) {
   try {
@@ -62,6 +61,5 @@ async function getCategoriesList(req, res, next) {
     next(error);
   }
 }
-
 
 module.exports = { create, update, remove, getAllProducts, getProduct, getCategoriesList }

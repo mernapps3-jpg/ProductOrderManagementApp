@@ -5,6 +5,7 @@ const Product = require('../models/Product');
 
 const geminiClient = env.geminiApiKey ? new GoogleGenerativeAI(env.geminiApiKey) : null;
 
+<<<<<<< HEAD
 async function askChatGpt(prompt) {
   const response = await axios.post(
     'https://api.openai.com/v1/chat/completions',
@@ -27,15 +28,47 @@ async function askChatGpt(prompt) {
   return answer.trim();
 }
 
+=======
+
+async function askChatGpt(prompt) {
+    const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+            model: env.chatGptModel,
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.3,
+            max_tokens: 300
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${env.chatGptApiKey}`,
+                'Content-Type': 'application/json'
+            },
+            timeout: 10000
+        }
+    );
+
+    const answer = response.data.choices?.[0]?.message?.content || 'No response';
+    return answer.trim();
+}
+
+
+>>>>>>> 6432981299144a67202438b1066a4f3b7c231d0f
 async function askAi(prompt) {
     const cleanPrompt = prompt.trim();
 
     if (geminiClient) {
         try {
             const model = geminiClient.getGenerativeModel({ model: env.geminiModel });
+<<<<<<< HEAD
             const result = await model.generateContent(cleanPrompt);
             const text = result.response?.text?.() || "No response";
             return text.trim();
+=======
+            const result = await model.generateContent(cleanPrompt)
+            const text = result.response?.text?.() || "No response"
+            return text.trim()
+>>>>>>> 6432981299144a67202438b1066a4f3b7c231d0f
         } catch (error) {
             if (env.chatGptApiKey) {
                 return askChatGpt(cleanPrompt);
@@ -43,15 +76,25 @@ async function askAi(prompt) {
             throw error;
         }
     }
+<<<<<<< HEAD
 }
 
 
 async function getProductAssistantResponse(userQuestion, productId = null) {
     let productContext = "";
+=======
+
+    return 'Demo response: add GEMINI_API_KEY or CHATGPT_API_KEY in backend/.env to get live AI answers.';
+}
+
+async function getProductAssistantResponse(userQuestion, productId = null) {
+    let productContext = '';
+>>>>>>> 6432981299144a67202438b1066a4f3b7c231d0f
 
     if (productId) {
         const product = await Product.findById(productId);
         if (product) {
+<<<<<<< HEAD
             productContext = `Product Information:
                   - Name: ${product.name}
                   - Description: ${product.description}
@@ -65,11 +108,35 @@ async function getProductAssistantResponse(userQuestion, productId = null) {
       User Question: ${userQuestion}
       Please provide a clear, helpful, and concise answer. If the question is about a specific product, use the product information provided.
       Keep your response friendly and informative, suitable for customers who may not be tech-savvy.`;
+=======
+            productContext = `
+Product Information:
+- Name: ${product.name}
+- Description: ${product.description}
+- Price: $${product.price}
+- Category: ${product.category}
+- Stock: ${product.stock} units available
+`;
+        }
+    }
+
+    const prompt = `You are a helpful product assistant for an e-commerce store.
+${productContext ? productContext : 'You can answer questions about products in general.'}
+
+User Question: ${userQuestion}
+
+Please provide a clear, helpful, and concise answer. If the question is about a specific product, use the product information provided.
+Keep your response friendly and informative, suitable for customers who may not be tech-savvy.`;
+>>>>>>> 6432981299144a67202438b1066a4f3b7c231d0f
 
     try {
         return await askAi(prompt);
     } catch (error) {
+<<<<<<< HEAD
         throw new Error(`AI service error: ${error.message}`)
+=======
+        throw new Error(`AI service error: ${error.message}`);
+>>>>>>> 6432981299144a67202438b1066a4f3b7c231d0f
     }
 }
 

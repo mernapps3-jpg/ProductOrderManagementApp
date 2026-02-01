@@ -33,5 +33,4 @@ function authorizeRole(role) {
   };
 }
 
-
 module.exports = { authenticate, authorizeRole }
