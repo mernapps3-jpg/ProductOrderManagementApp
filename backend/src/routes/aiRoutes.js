@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const express = require('express');
 const { askQuestion } = require('../controllers/aiController');
 const { authenticate } = require('../middlewares/authMiddleware');
@@ -11,16 +10,3 @@ const router = express.Router();
 router.post('/ask', authenticate, aiQueryValidator, validateRequest, askQuestion);
 
 module.exports = router;
-=======
-const express = require("express");
-const { askQuestion } = require("../controllers/aiController")
-const { authenticate } = require("../middlewares/authMiddleware");
-const { aiQueryValidator } = require("../validators/aiValidators")
-const validateRequest = require("../middlewares/validateRequest");
-
-const router = express.Router();
-
-router.post("/ask", authenticate, aiQueryValidator, validateRequest, askQuestion)
-
-module.exports = router;
->>>>>>> 6432981299144a67202438b1066a4f3b7c231d0f
