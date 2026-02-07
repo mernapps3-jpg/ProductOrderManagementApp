@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
-// import Products from './pages/Products';
-// import ProductDetail from './pages/ProductDetail';
-// import CreateOrder from './pages/CreateOrder';
-// import Orders from './pages/Orders';
-// import OrderDetail from './pages/OrderDetail';
-// import AdminProducts from './pages/AdminProducts';
-// import AdminOrders from './pages/AdminOrders';
-// import AIAssistant from './pages/AIAssistant';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
+import CreateOrder from './pages/CreateOrder';
+import Orders from './pages/Orders';
+import OrderDetail from './pages/OrderDetail';
+import AdminProducts from './pages/AdminProducts';
+import AdminOrders from './pages/AdminOrders';
+import AIAssistant from './pages/AIAssistant';
 import Footer from './components/Footer';
 import styles from './styles/ui.module.css';
 
@@ -53,15 +53,15 @@ export default function App() {
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              {/* <Route
+              <Route
                 path="/"
                 element={
                   <ProtectedRoute>
                     <Products />
                   </ProtectedRoute>
                 }
-              /> */}
-              {/* <Route
+              />
+              <Route
                 path="/products/:id"
                 element={
                   <ProtectedRoute>
@@ -116,7 +116,7 @@ export default function App() {
                     <AIAssistant />
                   </ProtectedRoute>
                 }
-              /> */}
+              />
             </Routes>
           </main>
           <Footer />
