@@ -187,3 +187,7 @@ ProductOrderManagementApp/
 - `src/middlewares`: auth, validation, error handling
 - `src/validators`: request validation rules
 - `src/utils`: token generation, admin seeding
+
+
+
+# Frontend Development
